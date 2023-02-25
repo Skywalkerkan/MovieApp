@@ -21,6 +21,7 @@ class NetworkManager {
             case .failure(let error):
                 print(error.localizedDescription)
                 completion(.failure(.generalError))
+                print("KEKE")
             }
             
         }

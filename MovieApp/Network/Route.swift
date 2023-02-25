@@ -11,7 +11,8 @@ enum Route: String{
 
     
     case popular = "movie/popular"
-    case topRated = "/movie/top_rated"
+    case topRated = "movie/top_rated"
+    case upcoming = "movie/upcoming"
 
     
     
@@ -21,6 +22,8 @@ enum Route: String{
             return NetworkHelper.shared.requestUrl(url: Route.popular.rawValue)
         case .topRated:
             return NetworkHelper.shared.requestUrl(url: Route.topRated.rawValue)
+        case .upcoming:
+            return NetworkHelper.shared.requestUrl(url: Route.upcoming.rawValue)
         }
         
     }

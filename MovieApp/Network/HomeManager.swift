@@ -15,7 +15,7 @@ class HomeManager {
     static let shared = HomeManager()
     
     func getCategoryMovies(completion: @escaping(Movies?, Error?) -> Void){
-        NetworkManager.shared.request(type: Movies.self, url: Route.topRated.path, method: .get) { response in
+        NetworkManager.shared.request(type: Movies.self, url: Route.popular.path, method: .get) { response in
             switch response{
             case .success(let data):
                 completion(data, nil)
@@ -25,6 +25,33 @@ class HomeManager {
                 print("kekekekkee")
             }
         }
+    }
+    
+    func getTopRatedMovies(completion: @escaping(Movies?, Error?) -> Void){
+        NetworkManager.shared.request(type: Movies.self, url: Route.topRated.path, method: .get) { response in
+            switch response{
+            case .success(let data):
+                completion(data, nil)
+            case .failure(let error):
+                completion(nil, error)
+                print("kekimsi")
+            }
+        }
+    }
+    
+    func getUpcomingMovies(completion: @escaping(Movies?, Error?) -> Void){
+        
+        NetworkManager.shared.request(type: Movies.self, url: Route.upcoming.path, method: .get) { response in
+            switch response{
+            case .success(let data):
+                completion(data, nil)
+            case .failure(let error):
+                completion(nil, error)
+                print("kekiğimsi")
+            }
+        }
+        
+        
     }
     
 }
