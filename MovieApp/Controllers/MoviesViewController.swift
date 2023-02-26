@@ -41,6 +41,7 @@ class MoviesViewController: UIViewController {
             }else{
                 //print("kekekeke")
                 self?.popularMovies = movie?.results ?? []
+                print("aaaaaaaaaaa\(movie)")
                 
                 self?.popularCollectionView.reloadData()
             }

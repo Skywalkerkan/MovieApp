@@ -14,8 +14,8 @@
             filePath = "MovieApp/Controllers/MoviesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "MoviesViewController"
             landmarkType = "3">
          </BreakpointContent>

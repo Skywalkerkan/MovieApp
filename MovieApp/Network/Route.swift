@@ -13,6 +13,7 @@ enum Route: String{
     case popular = "movie/popular"
     case topRated = "movie/top_rated"
     case upcoming = "movie/upcoming"
+    case searching = "search/movie"
 
     
     
@@ -24,6 +25,8 @@ enum Route: String{
             return NetworkHelper.shared.requestUrl(url: Route.topRated.rawValue)
         case .upcoming:
             return NetworkHelper.shared.requestUrl(url: Route.upcoming.rawValue)
+        case .searching:
+            return NetworkHelper.shared.requestUrl(url: Route.searching.rawValue)
         }
         
     }
@@ -43,4 +46,8 @@ class NetworkHelper{
     func requestUrl(url: String) -> String{
         baseUrl + url + "?api_key=" + apiKey
     }
+    
+    /*func requestSearchUrl(url: String) -> String{
+        baseUrl + url + "?api_key=" + apiKey
+    }*/
 }

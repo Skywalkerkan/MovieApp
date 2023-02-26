@@ -54,4 +54,16 @@ class HomeManager {
         
     }
     
+    func getSearchingMovies(queryParameter: String, completion: @escaping(Movies?, Error?) -> Void){
+        NetworkManager.shared.request(type: Movies.self, url: Route.searching.path + queryParameter, method: .get) { response in
+            switch response{
+            case .success(let data):
+                completion(data, nil)
+            case .failure(let error):
+                completion(nil, error)
+                print("kekiğimsi")
+            }
+        }
+    }
+    
 }
