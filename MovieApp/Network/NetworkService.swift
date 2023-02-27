@@ -9,6 +9,7 @@ class NetworkManager {
     
     func request<T: Codable>(type: T.Type, url: String, method: HTTPMethod, completion: @escaping(Result<T,ErrorTypes>) -> Void){
         
+        
         AF.request(url, method: method).responseData { response in
             switch response.result{
             case .success(let data):
@@ -21,7 +22,6 @@ class NetworkManager {
             case .failure(let error):
                 print(error.localizedDescription)
                 completion(.failure(.generalError))
-                print("KEKE")
             }
             
         }

@@ -11,16 +11,7 @@ class PopularDetailViewController: UIViewController {
     
     
     var Movies : MovieResult!
-    let blurEffect = UIBlurEffect(style: .light)
-    let blurEffectView = UIVisualEffectView()
-    
-//    @IBOutlet weak var yildizLabel: UILabel!
-//    @IBOutlet weak var imageView1: UIImageView!
-//
-//    @IBOutlet weak var descriptionLabel: UILabel!
-//
-//    @IBOutlet weak var titleLabel: UILabel!
-//    @IBOutlet weak var imageView2: UIImageView!
+
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView2: UIImageView!
@@ -34,7 +25,7 @@ class PopularDetailViewController: UIViewController {
         
         imageView1.layer.cornerRadius = 15
         
-       // let image: UIImage = yourImageView.image
+
         configure()
         
 
@@ -52,8 +43,8 @@ class PopularDetailViewController: UIViewController {
         imageView2.sd_setImage(with: URL(string: Movies.posterImageımsı))
         descriptionLabel.text = Movies.overview
         titleLabel.text = Movies.title
-        print("BackdropPath: \(Movies.backdropPath)")
-        print("genreIDS: \(Movies.genreIDS)")
+        //print("BackdropPath: \(Movies.backdropPath)")
+        //print("genreIDS: \(Movies.genreIDS)")
     }
     
 

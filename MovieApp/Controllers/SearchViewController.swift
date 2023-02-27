@@ -61,25 +61,13 @@ extension SearchViewController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-       /* if searchText.last == " "{
-            print("melek")
-            var kelime = ""
-            
-            kelime = searchText.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
-            print(kelime)
-            searchApi(movieName: kelime)
-        }*/
-        
-
-        
-        
         
         
         if searchText.contains(" "){
          var kelime = ""
          
          kelime = searchText.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
-         print(kelime)
+         //print(kelime)
          searchApi(movieName: kelime)
         }
         
@@ -87,23 +75,13 @@ extension SearchViewController: UISearchBarDelegate{
         print(searchText)
         filteredData = []
         tableView.isHidden = false
-        /*for movie in self.data{
-        tableView.isHidden = false
-            if ((movie.originalTitle?.lowercased().contains(searchText.lowercased())) != nil){
-                filteredData = data
-            }
-        }*/
+
         
         for movie in self.data{
         tableView.isHidden = false
             if ((movie.originalTitle?.lowercased().contains(searchText.lowercased())) != nil){
                 filteredData = data
                 
-                /*for filter in filteredData{
-                    if filter.originalTitle == searchText.lowercased(){
-                        filters = filteredData
-                    }
-                }*/
             }
         }
 
@@ -115,17 +93,7 @@ extension SearchViewController: UISearchBarDelegate{
             tableView.isHidden = true
         }
         
-       /* if searchText == ""{
-            filteredData = data
-        }
-        
-        for word in data{
-            if word.uppercased().contains(searchText.uppercased()){
-                filteredData.append(word)
-            }
-        }
-        self.tableView.reloadData()
-        */
+
         
     }
     

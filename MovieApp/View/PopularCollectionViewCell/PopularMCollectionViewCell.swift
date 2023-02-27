@@ -27,9 +27,7 @@ class PopularMCollectionViewCell: UICollectionViewCell {
     
     
     func configure(popularMovies: MovieResult){
-       // movieLabel.text = popularMovies.title!
-       // print(movieLabel.text)
-        //KSDKFKS
+
         imageView.sd_setImage(with: URL(string: popularMovies.posterImage)!)
         yildizLabel.text = String(format: "%.1f /10 IMDB", popularMovies.voteAverage!)
         

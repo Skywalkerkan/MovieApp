@@ -31,10 +31,8 @@ class HomeManager {
             switch response{
             case .success(let data):
                 completion(data, nil)
-               // print(data)
             case .failure(let error):
                 completion(nil, error)
-                print("kekekekkee")
             }
         }
     }
@@ -46,7 +44,6 @@ class HomeManager {
                 completion(data, nil)
             case .failure(let error):
                 completion(nil, error)
-                print("kekimsi")
             }
         }
     }
@@ -59,7 +56,6 @@ class HomeManager {
                 completion(data, nil)
             case .failure(let error):
                 completion(nil, error)
-                print("kekiğimsi")
             }
         }
         
@@ -73,7 +69,6 @@ class HomeManager {
                 completion(data, nil)
             case .failure(let error):
                 completion(nil, error)
-                print("kekiğimsi")
             }
         }
     }
