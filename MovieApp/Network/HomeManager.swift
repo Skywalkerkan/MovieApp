@@ -14,6 +14,18 @@ class HomeManager {
     
     static let shared = HomeManager()
     
+    
+    func getTrendingMovies(completion: @escaping(Movies?, Error?) -> Void){
+        NetworkManager.shared.request(type: Movies.self, url: Route.trending.path, method: .get) { response in
+            switch response{
+            case .success(let data):
+                completion(data, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
+    }
+    
     func getCategoryMovies(completion: @escaping(Movies?, Error?) -> Void){
         NetworkManager.shared.request(type: Movies.self, url: Route.popular.path, method: .get) { response in
             switch response{

@@ -14,11 +14,15 @@ enum Route: String{
     case topRated = "movie/top_rated"
     case upcoming = "movie/upcoming"
     case searching = "search/movie"
+    case trending = "trending/movie/day"
 
     
     
     var path: String{
         switch self{
+        
+        case .trending:
+            return NetworkHelper.shared.requestUrl(url: Route.trending.rawValue)
         case.popular:
             return NetworkHelper.shared.requestUrl(url: Route.popular.rawValue)
         case .topRated:

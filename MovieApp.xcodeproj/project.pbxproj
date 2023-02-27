@@ -27,6 +27,8 @@
 		DEA2803429AB7F960027A9F2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2803329AB7F960027A9F2 /* SearchViewController.swift */; };
 		DEA2803729AB806D0027A9F2 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2803529AB806D0027A9F2 /* SearchTableViewCell.swift */; };
 		DEA2803829AB806D0027A9F2 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA2803629AB806D0027A9F2 /* SearchTableViewCell.xib */; };
+		DECEB4F829ABB1F500100070 /* SlidingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECEB4F629ABB1F500100070 /* SlidingCollectionViewCell.swift */; };
+		DECEB4F929ABB1F500100070 /* SlidingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECEB4F729ABB1F500100070 /* SlidingCollectionViewCell.xib */; };
 		DED4E5BF29A8DCA200C74B0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4E5BE29A8DCA200C74B0C /* AppDelegate.swift */; };
 		DED4E5C129A8DCA200C74B0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4E5C029A8DCA200C74B0C /* SceneDelegate.swift */; };
 		DED4E5C329A8DCA200C74B0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4E5C229A8DCA200C74B0C /* ViewController.swift */; };
@@ -55,6 +57,8 @@
 		DEA2803329AB7F960027A9F2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DEA2803529AB806D0027A9F2 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		DEA2803629AB806D0027A9F2 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		DECEB4F629ABB1F500100070 /* SlidingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingCollectionViewCell.swift; sourceTree = "<group>"; };
+		DECEB4F729ABB1F500100070 /* SlidingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlidingCollectionViewCell.xib; sourceTree = "<group>"; };
 		DED4E5BB29A8DCA200C74B0C /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED4E5BE29A8DCA200C74B0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DED4E5C029A8DCA200C74B0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,15 @@
 				DE60021D29A930F300B7C046 /* HomeManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		DECEB4F529ABB1C400100070 /* SlidingCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DECEB4F629ABB1F500100070 /* SlidingCollectionViewCell.swift */,
+				DECEB4F729ABB1F500100070 /* SlidingCollectionViewCell.xib */,
+			);
+			path = SlidingCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		DED4E5B229A8DCA200C74B0C = {
@@ -146,6 +159,7 @@
 		DED4E5D329A8DCD100C74B0C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DECEB4F529ABB1C400100070 /* SlidingCollectionViewCell */,
 				DED4E5DC29A8E46600C74B0C /* PopularCollectionViewCell */,
 			);
 			path = View;
@@ -249,6 +263,7 @@
 				DEA2803829AB806D0027A9F2 /* SearchTableViewCell.xib in Resources */,
 				DE29EC5A29A8E73600923B2A /* PopularMCollectionViewCell.xib in Resources */,
 				DED4E5C629A8DCA200C74B0C /* Main.storyboard in Resources */,
+				DECEB4F929ABB1F500100070 /* SlidingCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +292,7 @@
 				DED4E5BF29A8DCA200C74B0C /* AppDelegate.swift in Sources */,
 				DED4E5C129A8DCA200C74B0C /* SceneDelegate.swift in Sources */,
 				DED4E5D729A8E2A500C74B0C /* MoviesViewController.swift in Sources */,
+				DECEB4F829ABB1F500100070 /* SlidingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

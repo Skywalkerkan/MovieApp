@@ -11,20 +11,32 @@ class MoviesViewController: UIViewController {
 
     
    
+    @IBOutlet weak var trendCollectionViews: UICollectionView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
     
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
     
     @IBOutlet weak var upcomingCollectionView: UICollectionView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
     
     var popularMovies : [MovieResult] = []
     var topRatedMovies: [MovieResult] = []
     var upcomingMovies: [MovieResult] = []
+    var trendMoviesSlide: [MovieResult] = []
+    
+    var currentSlide = 0{
+        didSet{
+            pageControl.currentPage = currentSlide
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        trendCollectionViews.dataSource = self
+        trendCollectionViews.delegate = self
         
         popularCollectionView.dataSource = self
         popularCollectionView.delegate = self
@@ -35,13 +47,25 @@ class MoviesViewController: UIViewController {
         
         registerCell()
         
+        
+        HomeManager.shared.getTrendingMovies { [weak self] movie, error in
+            if let error = error{
+                print(error.localizedDescription)
+            }else{
+                self?.trendMoviesSlide = movie?.results ?? []
+                self?.pageControl.numberOfPages = self?.trendMoviesSlide.count ?? 0
+                self?.trendCollectionViews.reloadData()
+                //print("aaaaaaaaaaaaaaaaaaaaaaasdsadsadsa \(self?.trendMoviesSlide[1].title)")
+            }
+        }
+        
         HomeManager.shared.getCategoryMovies { [weak self] movie, error in
             if let error = error{
                 print(error.localizedDescription)
             }else{
                 //print("kekekeke")
                 self?.popularMovies = movie?.results ?? []
-                print("aaaaaaaaaaa\(movie)")
+                //print("aaaaaaaaaaa\(movie)")
                 
                 self?.popularCollectionView.reloadData()
             }
@@ -76,6 +100,8 @@ class MoviesViewController: UIViewController {
     
     func registerCell(){
         
+        trendCollectionViews.register(UINib(nibName: SlidingCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: SlidingCollectionViewCell.identifier)
+        
         popularCollectionView.register(UINib(nibName: PopularMCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: PopularMCollectionViewCell.identifier)
         
         topRatedCollectionView.register(UINib(nibName: TopRatedMCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: TopRatedMCollectionViewCell.identifier)
@@ -89,11 +115,16 @@ class MoviesViewController: UIViewController {
 }
 
 
-extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch collectionView{
+            
+        case trendCollectionViews:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SlidingCollectionViewCell.identifier, for: indexPath) as! SlidingCollectionViewCell
+            cell.configure(trendMovie: trendMoviesSlide[indexPath.row])
+            return cell
         case popularCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularMCollectionViewCell.identifier, for: indexPath) as! PopularMCollectionViewCell
             cell.configure(popularMovies: popularMovies[indexPath.row])
@@ -113,17 +144,19 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         
         /*let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularMCollectionViewCell.identifier, for: indexPath) as! PopularMCollectionViewCell
-        //print("aaaaaa")
-        //print(popularMovies[indexPath.row])
-       // print(popularMovies[indexPath.row].title)
-        cell.configure(popularMovies: popularMovies[indexPath.row])
-       // print(cell)
-        return cell*/
+         //print("aaaaaa")
+         //print(popularMovies[indexPath.row])
+         // print(popularMovies[indexPath.row].title)
+         cell.configure(popularMovies: popularMovies[indexPath.row])
+         // print(cell)
+         return cell*/
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView{
+        case trendCollectionViews:
+            return trendMoviesSlide.count
         case popularCollectionView:
             return popularMovies.count
         case topRatedCollectionView:
@@ -135,8 +168,9 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         
         /*print(popularMovies.count)
-        return self.popularMovies.count*/
+         return self.popularMovies.count*/
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = PopularDetailViewController.instantiate()
@@ -152,9 +186,47 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
             controller.Movies = upcomingMovies[indexPath.row]
             navigationController?.pushViewController(controller, animated: true)
         }
+        else if collectionView == trendCollectionViews{
+            controller.Movies = trendMoviesSlide[indexPath.row]
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        switch scrollView{
+        case trendCollectionViews:
+            let width = scrollView.frame.width
+            currentSlide = Int(scrollView.contentOffset.x/width)
+        default:
+            return
+        }
+    }
+    
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch collectionView{
+        case trendCollectionViews:
+            let size = collectionView.frame.size
+            return CGSize(width: size.width, height: size.height)
+        case popularCollectionView:
+            let size = collectionView.frame.size
+            return CGSize(width: size.width, height: size.height)
+        case upcomingCollectionView:
+            let size = collectionView.frame.size
+            return CGSize(width: size.width, height: size.height)
+        case topRatedCollectionView:
+            let size = collectionView.frame.size
+            return CGSize(width: size.width, height: size.height)
+        default:
+            return CGSize()
+        }
     }
     
     
+    
+    
 }
+    
+    
+
 
 
